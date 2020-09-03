@@ -5,7 +5,11 @@ function Modal(props) {
   return (
     <div className="modal-container show-modal" id="modal">
       <div className="modal">
-        <button className="close-btn" id="close">
+        <button
+          className="close-btn"
+          id="close"
+          onClick={() => props.toggleModalVisibllity()}
+        >
           <i className="fa fa-times"></i>
         </button>
         <div className="modal-header">

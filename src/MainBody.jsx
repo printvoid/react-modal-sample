@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import NavBar from "./NavBar";
+import Header from "./Header";
+import Modal from "./Modal";
 
 function MainBody() {
-  const [modalVisibility, setmodalVisibility] = useState(true);
+  const [modalVisibility, setmodalVisibility] = useState(false);
   const [visibleflag, setvisibleflag] = useState(false);
-  //const [hidesideBar, sethidesideBar] = useState(false);
 
   const toggleModalVisibllity = () => {
     setmodalVisibility(!modalVisibility);
@@ -22,30 +23,10 @@ function MainBody() {
   return (
     <div className="container">
       <NavBar />
-      <header>
-        <button
-          id="toggle"
-          className="toggle"
-          onClick={(e) => showSideBarShow()}
-        >
-          <i className="fa fa-bars fa-2x"></i>
-        </button>
-
-        <h1>My Landing Page</h1>
-
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur,
-          amet!
-        </p>
-
-        <button
-          className="cta-btn"
-          id="open"
-          onClick={(e) => toggleModalVisibllity(e)}
-        >
-          Sign Up1
-        </button>
-      </header>
+      <Header
+        showSideBarShow={showSideBarShow}
+        toggleModalVisibllity={toggleModalVisibllity}
+      />
 
       {/* Main Section */}
       <h2>What is this landing page about?</h2>
@@ -89,62 +70,7 @@ function MainBody() {
       </p>
       {/* Modal Container */}
       {modalVisibility ? (
-        <div className="modal-container show-modal" id="modal">
-          <div className="modal">
-            <button
-              className="close-btn"
-              id="close"
-              onClick={() => toggleModalVisibllity()}
-            >
-              <i className="fa fa-times"></i>
-            </button>
-            <div className="modal-header">
-              <h3>Sign Up11</h3>
-            </div>
-            <div className="modal-content">
-              <p>Register with us to get offers, support and more</p>
-              <form className="modal-form">
-                <div>
-                  <label for="name">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="Enter Name"
-                    className="form-input"
-                  />
-                </div>
-                <div>
-                  <label for="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    placeholder="Enter Email"
-                    className="form-input"
-                  />
-                </div>
-                <div>
-                  <label for="password">Password</label>
-                  <input
-                    type="password"
-                    id="password"
-                    placeholder="Enter Password"
-                    className="form-input"
-                  />
-                </div>
-                <div>
-                  <label for="password2">Confirm Password</label>
-                  <input
-                    type="password"
-                    id="password2"
-                    placeholder="Confirm Password"
-                    className="form-input"
-                  />
-                </div>
-                <input type="submit" value="Submit" className="submit-btn" />
-              </form>
-            </div>
-          </div>
-        </div>
+        <Modal toggleModalVisibllity={toggleModalVisibllity} />
       ) : (
         ""
       )}

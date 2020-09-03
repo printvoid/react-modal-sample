@@ -3,7 +3,11 @@ import React from "react";
 function Header(props) {
   return (
     <header>
-      <button id="toggle" className="toggle" onClick={(e) => showSideBarShow()}>
+      <button
+        id="toggle"
+        className="toggle"
+        onClick={(e) => props.showSideBarShow()}
+      >
         <i className="fa fa-bars fa-2x"></i>
       </button>
 
@@ -16,7 +20,7 @@ function Header(props) {
       <button
         className="cta-btn"
         id="open"
-        onClick={(e) => toggleModalVisibllity(e)}
+        onClick={(e) => props.toggleModalVisibllity(e)}
       >
         Sign Up1
       </button>
